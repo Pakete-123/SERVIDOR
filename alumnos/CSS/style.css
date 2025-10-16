@@ -1,5 +1,6 @@
 body { 
-    font-family: Arial, sans-serif; margin: 30px; 
+    font-family: Arial, sans-serif; 
+    margin: 30px; 
 }
 
 form { 
@@ -7,11 +8,14 @@ form {
 }
 
 table { 
-    border-collapse: collapse; width: 70%; 
+    border-collapse: collapse; 
+    width: 70%; 
 }
 
 th, td { 
-    border: 1px solid #999; padding: 8px; text-align: center; 
+    border: 1px solid #999; 
+    padding: 8px; 
+    text-align: center; 
 }
 
 th { 
@@ -19,9 +23,11 @@ th {
 }
 
 input, select { 
-    padding: 5px; margin: 4px; 
+    padding: 5px; 
+    margin: 4px; 
 }
 
 .btn { 
-    padding: 6px 12px; cursor: pointer; 
+    padding: 6px 12px; 
+    cursor: pointer; 
 }
