@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Form sencillo</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+    </head>
+    <body>
+
+        <form action="saluda.php" method="get">
+
+            <p><label for="nombre">Nombre</label></p>
+            <input type="text" name="nombre" id="nombre">
+
+            <p><label for="apellido1">Apellido1</label></p>
+            <input type="text" name="apellido1" id="apellido1">
+
+            <p><label for="apellido2">Apellido2</label></p>
+            <input type="text" name="apellido2" id="apellido2">
+
+            <p><label for="edad">Edad</label></p>
+            <input type="number" name="edad" id="edad" min="0" max="125">
+
+            <p><label for="tiempo">Tiempo</label></p>
+            <input type="text" name="tiempo" id="tiempo">
+
+            <p><input type="submit" value="enviar"></p>
+
+        </form>
+
+    </body>
+</html>

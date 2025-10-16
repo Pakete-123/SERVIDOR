@@ -1,0 +1,33 @@
+body{
+    background-image: url(img/fondo_menu.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+label{
+    font-weight: bold;
+    font-size: large;
+}
+
+input{
+    margin-top: 20px;
+}
+
+img {
+    width: 80px;
+    height: 50px;
+    margin-left: 100px;
+}
+
+.menu{
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 30%;
+    text-align: left;
+}
+
+.container{
+    background-color: bisque;
+    padding: 40px;
+}

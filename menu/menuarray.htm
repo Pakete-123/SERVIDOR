@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="menu.css">
+        <title>Menu restaurante</title>
+    </head>
+    <body>
+        <form action="menuarray.php" method="post">
+            <div class="menu">
+
+                <div class="container">
+                    <label for="entrantes">Entrantes</label><br>
+                    <input type="radio" name="entrantes" id="entrantes" value="consome">Consomé  3,50€</input>
+                    <br>
+                    <input type="radio" name="entrantes" id="entrantes" value="castellana">Sopa Castellana  7,00€</input><br>
+                    <input type="radio" name="entrantes" id="entrantes" value="judiones">Judiones de la Granja  10,50€</input><br>
+                    <input type="radio" name="entrantes" id="entrantes" value="esparragos">Espárragos con Mayonesa  7,00€</input><br>
+                </div>
+
+                <div class="container">
+                    <label for="primeros">Primeros Platos</label><br>
+                    <input type="radio" name="primeros" id="primeros" value="anchoas">Anchoas con Boquerones  16,00€</input><br>
+                    <input type="radio" name="primeros" id="primeros" value="chopitos">Chopitos  14,00€</input><br>
+                    <input type="radio" name="primeros" id="primeros" value="revuelto-setas">Revuelto de Setas con Gambas  11,50€</input><br>
+                    <input type="radio" name="primeros" id="primeros" value="revuelto-ajetes">Revuelto de Ajetes con Gambas  11,50€</input><br>
+                </div>
+
+                <div class="container">
+                    <label for="segundos">Segundos Platos</label><br>
+                    <input type="radio" name="segundos" id="segundos" value="paletilla">Paletilla de Lechal con patatas panaderas  26,00€</input><br>
+                    <input type="radio" name="segundos" id="segundos" value="rabo-toro">Rabo de Toro Estofado  16,00€</input><br>
+                    <input type="radio" name="segundos" id="segundos" value="rodaballo">Rodaballo a la Espalda  19,00€</input><br>
+                    <input type="radio" name="segundos" id="segundos" value="bacalao">Bacalao a la Romana  16,00€</input><br>
+                </div>
+
+                <div class="container">
+                    <label for="postres">Postres</label><br>
+                    <input type="radio" name="postres" id="postres" value="tarta">Tartas Variadas  6,00€</input><br>
+                    <input type="radio" name="postres" id="postres" value="nata-nueces">Nueces con Nata  6,50€</input><br>
+                    <input type="radio" name="postres" id="postres" value="flan">Flan de Huevo  4,00€</input><br>
+                    <input type="radio" name="postres" id="postres" value="banana">Banana Split  9,50€</input><br>
+                </div>
+
+                <div class="container">
+                    <input type="submit" value="enviar">
+                </div>
+                
+            </div>
+        </form>
+    </body>
+</html>
