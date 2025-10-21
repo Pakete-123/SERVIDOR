@@ -104,15 +104,15 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["nom"])) {
                     <td><?= htmlspecialchars($al["cicloF"]) ?></td>
                     <td><?= htmlspecialchars($al["curso"]) ?></td>
                     <td>
-                        <form action="borrarAlumno.php" method="post" style="display:inline">
-                            <input type="hidden" name="index" value="<?= $index ?>">
-                            <button type="submit">🗑 Borrar</button>
-                        </form>
-                    </td>
-                    <td>
                         <form action="editarAlumno.php" method="post" style="display: inline">
                             <input type="hidden" name="index" value="<?= $index ?>">
                             <button type="submit">✍ Editar</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="borrarAlumno.php" method="post" style="display:inline">
+                            <input type="hidden" name="index" value="<?= $index ?>">
+                            <button type="submit" onclick="return confirm('¿Está segur@ de que quiere borrar ese alumno?')">🗑 Borrar</button>
                         </form>
                     </td>
                 </tr>
