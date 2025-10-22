@@ -2,8 +2,8 @@
 
 session_start();
 
-if(!isset($_SESSION["alumnos"])) {
-    $_SESSION["alumnos"] = [];
+if (isset($_SESSION["rol"]) === "admin") {
+    header("Location: ../login/index.php");
 };
 
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["nom"])) {
@@ -79,12 +79,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["nom"])) {
             <option value="2º">2º</option>
         </select>
 
-        <input type="submit" value="registrar" class="btn">
+        <input type="submit" value="Registrar" class="btn">
     </form>
-
-    <h2>Listado de Alumnos Registrados</h2>
-
+    
     <?php if(!empty($_SESSION["alumnos"])): ?>
+        
+        <h2>Listado de Alumnos Registrados</h2>
     
         <table>
             <tr>
@@ -100,9 +100,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["nom"])) {
                 <tr>
                     <td><?= htmlspecialchars($al["nom"]) ?></td>
                     <td><?= htmlspecialchars($al["ape"]) ?></td>
-                    <td><?= htmlspecialchars($al["edad"]) ?></td>
-                    <td><?= htmlspecialchars($al["cicloF"]) ?></td>
-                    <td><?= htmlspecialchars($al["curso"]) ?></td>
+                    <td><?= $al["edad"] ?></td>
+                    <td><?= $al["cicloF"] ?></td>
+                    <td><?= $al["curso"] ?></td>
                     <td>
                         <form action="editarAlumno.php" method="post" style="display: inline">
                             <input type="hidden" name="index" value="<?= $index ?>">
@@ -120,9 +120,17 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["nom"])) {
 
             </table>
             
-            <?php else: ?>
-                <p>📂No hay alumnos registrados aún.</p>
-            <?php endif; ?>
+        <?php else: ?>
+            <p>📂No hay alumnos registrados aún.</p>
+        <?php endif; ?>
 
+        <a href="?logout=1">Cerrar Sesión</a>
 </body>
 </html>
+
+<?php 
+if (isset($_GET["logout"])) {
+    header("Location: ../login/index.php");
+    exit;
+}
+?>

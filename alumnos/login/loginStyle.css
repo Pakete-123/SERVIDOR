@@ -1,0 +1,63 @@
+/* style.css — estilo simple para login / panel */
+
+/* Reset muy ligero */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* Contenedor central */
+.container {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 20px;
+}
+
+/* Tarjeta */
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(20,20,30,0.06);
+  padding: 22px;
+}
+
+/* Encabezados */
+h1, h2 {
+  color: #222;
+  margin-bottom: 12px;
+}
+h2 { font-size: 1.25rem; }
+
+/* Formulario */
+form {
+  margin-top: 12px;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+label {
+  min-width: 110px;
+  color: #333;
+  font-weight: 600;
+}
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+  flex: 1 1 220px;
+  padding: 8px 10px;
+  border: 1px solid #d5dbe5;
+  border-radius: 6px;
+  outline: none;
+  transition: box-shadow .12s, border-color .12s;
+}
+input:focus, select:focus {
+  border-color: #6aa0ff;
+  box-shadow: 0 0 0 4px rgba(106,160,255,0.08);
+}
