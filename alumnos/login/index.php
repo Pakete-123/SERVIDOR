@@ -16,17 +16,21 @@ if (isset($_SESSION["usuario"])) {
     </head>
     <body>
         
-        <h2>Bienvenid@, <?= htmlspecialchars($usr)?></h2>
-        <h4>Tu rol es <?= htmlspecialchars($rol)?></h4>
+        <div class="container">
+            <div class="card">
+                <h2>Bienvenid@, <?= htmlspecialchars($usr)?></h2>
+                <h4>Tu rol es <?= htmlspecialchars($rol)?></h4>
 
-        <?php if ($rol === "admin"): ?>
-            <p>Eres administrador. Sólo tú puedes ver esto, a demás de administrar la página web.</p>
-            <a href="../alumno/añadirAlumno.php">Lista de alumnos</a>
-        <?php elseif ($rol === "usuario"): ?>
-            <p>Eres usuario. Estás registrado en esta página web.</p>
-        <?php endif ?>
-        <br>
-        <a href="?logout=1">Cerrar Sesión</a>
+                <?php if ($rol === "admin"): ?>
+                    <p>Eres administrador. Sólo tú puedes ver esto, a demás de administrar la página web.</p>
+                    <a href="../alumno/añadirAlumno.php">Lista de alumnos</a>
+                <?php elseif ($rol === "usuario"): ?>
+                    <p>Eres usuario. Estás registrado en esta página web.</p>
+                <?php endif ?>
+                <br>
+                <a href="?logout=1">Cerrar Sesión</a>
+            </div>
+        </div>
     </body>
     </html>
 
