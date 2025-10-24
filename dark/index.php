@@ -13,9 +13,7 @@ if (!isset($_SESSION["modo"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar Fondo</title>
-    <?php
-
-    if ($_SESSION["modo"] === "claro") { ?>
+    <?php if ($_SESSION["modo"] === "claro") { ?>
         <link rel="stylesheet" href="claro.css"> 
     <?php } else if ($_SESSION["modo"] === "oscuro") { ?>
         <link rel="stylesheet" href="oscuro.css">
