@@ -20,13 +20,14 @@ if (!isset($_SESSION["voto"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encuesta Géneros</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <h1>Encuesta de géneros musicales</h1>
 
     <form action="añadirVoto.php" method="post">
-
+    
         <?php foreach ($_SESSION["voto"] as $gen => $val) { ?>
 
             <label for="genero"><?= $gen ?>
