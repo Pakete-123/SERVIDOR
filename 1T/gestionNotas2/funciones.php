@@ -36,7 +36,7 @@ function mostrarDatos()
     mayorNota();
 
     ?>
-    <a href="<?= nuevoAlumno()?>?añadir"><button>Añadir Alumno</button></a>
+    <a href="<?= nuevoAlumno() ?>?añadir"><button>Añadir Alumno</button></a>
 
     <hr>
     <a href="<?= reiniciarSesion() ?>"><button>Reiniciar Sesión</button></a>
@@ -92,22 +92,24 @@ function reiniciarSesion()
     session_destroy();
 }
 
-$nom = $_POST["nom"] ?? null;
-$edad = $_POST["edad"] ?? null;
-$curso = $_POST["curso"] ?? null;
-$nota = $_POST["nota"] ?? null;
+if (isset($_GET["nuevo"])) {
+    $nom = $_POST["nom"] ?? null;
+    $edad = $_POST["edad"] ?? null;
+    $curso = $_POST["curso"] ?? null;
+    $nota = $_POST["nota"] ?? null;
 
-if ($nom && $edad && $curso && $nota) {
-    $alumno = [
-        "nombre" => $nom,
-        "edad" => $edad,
-        "curso" => $curso,
-        "nota" => $nota
-    ];
+    if ($nom && $edad && $curso && $nota) {
+        $alumno = [
+            "nombre" => $nom,
+            "edad" => $edad,
+            "curso" => $curso,
+            "nota" => $nota
+        ];
 
-    $_SESSION["alumnos"][] = $alumno;
-    header("Location: vista.php");
-    exit;
+        $_SESSION["alumnos"][] = $alumno;
+        header("Location: vista.php");
+        exit;
+    }
 }
 
 ?>

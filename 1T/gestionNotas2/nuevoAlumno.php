@@ -13,7 +13,7 @@ session_start();
 
 <body>
 
-    <form action="funciones.php" method="post">
+    <form action="funciones.php?nuevo" method="post">
         <label for="nombre">Nombre:
             <input type="text" name="nom">
         </label>
