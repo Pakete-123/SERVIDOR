@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require_once("funciones.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -13,13 +16,13 @@ session_start();
 
 <body>
 
-    <form action="funciones.php?nuevo" method="post">
+    <form action="vista.php" method="post">
         <label for="nombre">Nombre:
             <input type="text" name="nom">
         </label>
         <br>
         <label for="nombre">Edad:
-            <input type="text" name="edad">
+            <input type="number" name="edad">
         </label>
         <br>
         <label for="nombre">Curso:
@@ -27,7 +30,7 @@ session_start();
         </label>
         <br>
         <label for="nombre">Nota:
-            <input type="text" name="nota">
+            <input type="number" name="nota" step="0.1">
         </label>
         <br><br>
 
@@ -36,5 +39,3 @@ session_start();
     </form>
 
 </body>
-
-</html>
