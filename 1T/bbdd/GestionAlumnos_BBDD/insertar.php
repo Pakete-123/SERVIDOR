@@ -16,7 +16,6 @@ if ($val->num_rows == 0) {
     $sql = $conn->query("INSERT INTO alumnos (Nombre, Apellidos, Correo, Edad, Ciclo, Curso, Nota) VALUES ('$nombre','$apellidos', '$correo', $edad, '$ciclo', '$curso', $nota)");
 
     if ($sql === TRUE) {
-
         header("Location: index.php");
         exit;
     } else {
