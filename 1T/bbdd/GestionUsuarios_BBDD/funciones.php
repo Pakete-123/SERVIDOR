@@ -1,8 +1,13 @@
 <?php
 require_once("conexion.php");
 
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
+
 //Añadir usuario
-if (isset($_POST["guardar"])) {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = $_POST["nombre"];
     $apellidos = $_POST["apellidos"];
     $direccion = $_POST["direccion"];
@@ -19,20 +24,17 @@ if (isset($_POST["guardar"])) {
         $stmt->bind_param("sssssss", $nombre, $apellidos, $direccion, $genero, $fnac, $nick, $contraseña);
 
         if ($stmt->execute()) {
+
             header("Location: introducirUsuario.php");
             exit;
-        } else {
-            return ?> <script>
-                alert("Algo ha salido mal al introducir el usuario");
-            </script>
-        <?php        }
+        }
         $stmt->close();
     }
 }
 
 
 //Actualizar usuario
-if (isset($_POST["actualizar"])) {
+if (isset($_POST["Actualizar"])) {
     $id = $_POST["id"];
     $nombre = $_POST["nombre"];
     $apellidos = $_POST["apellidos"];
@@ -48,11 +50,7 @@ if (isset($_POST["actualizar"])) {
     if ($stmt->execute()) {
         header("Location: introducirUsuario.php");
         exit;
-    } else { ?>
-        <script>
-            alert('Error al actualizar usuario');
-        </script>
-    <?php    }
+    }
 }
 
 //Mostrar los usuarios
@@ -99,9 +97,9 @@ if (isset($_GET["editar"])) {
 
             <label>Género:</label>
             <select name="genero">
-                <option value="M" <?= $usuario['GENERO'] == 'M' ? 'selected' : '' ?>>Masculino</option>
-                <option value="F" <?= $usuario['GENERO'] == 'F' ? 'selected' : '' ?>>Femenino</option>
-                <option value="O" <?= $usuario['GENERO'] == 'O' ? 'selected' : '' ?>>Otro</option>
+                <option value="M" <?= $usuario["GENERO"] == "M" ? "selected" : "" ?>>Masculino</option>
+                <option value="F" <?= $usuario["GENERO"] == "F" ? "selected" : "" ?>>Femenino</option>
+                <option value="O" <?= $usuario["GENERO"] == "O" ? "selected" : "" ?>>Otro</option>
             </select><br>
 
             <label>Fecha Nacimiento:</label>
@@ -113,7 +111,7 @@ if (isset($_GET["editar"])) {
             <label>Contraseña:</label>
             <input type="password" name="contraseña" value="<?= $usuario['PASSWORD'] ?>"><br>
 
-            <button type="submit" name="actualizar">Actualizar</button>
+            <button type="submit" name="Actualizar">Actualizar</button>
         </form>
 <?php
     }
@@ -130,6 +128,12 @@ if (isset($_GET["eliminar"])) {
         header("Location: introducirUsuario.php");
         exit;
     }
+}
+
+if (isset($_GET["logout"])) {
+    unset($_SESSION["login"]);
+    header("Location: Login.php");
+    exit;
 }
 
 ?>

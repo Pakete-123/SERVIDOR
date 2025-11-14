@@ -36,7 +36,7 @@
         <label>Contraseña:</label>
         <input type="password" name="contraseña" required>
         <br><br>
-        <input type="submit" value="guardar">
+        <button type="submit" value="Guardar">Guardar</button>
     </form>
 
     <hr>
@@ -57,6 +57,10 @@
         <?= listarUsuarios($conn) ?>
         
     </table>
+    <br><br>
+
+    <a href="funciones.php?logout"><button>Cerrar Sesión</button></a>
+
 </body>
 
 </html>
