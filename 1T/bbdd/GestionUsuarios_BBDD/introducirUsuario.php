@@ -25,8 +25,8 @@
         <label>Género:</label>
         <select name="genero" required>
             <option value="O" default>Otro</option>
-            <option value="M" >Masculino</option>
-            <option value="F" >Femenino</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
         </select>
         <label>F. Nacimiento:</label>
         <input type="date" name="fnac" required>
@@ -55,7 +55,7 @@
         </tr>
 
         <?= listarUsuarios($conn) ?>
-        
+
     </table>
     <br><br>
 

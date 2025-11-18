@@ -2,6 +2,7 @@
 require_once("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  
   $nick = $_POST["nick"];
   $pwd = $_POST["pwd"];
 
