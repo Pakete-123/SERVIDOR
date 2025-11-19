@@ -3,7 +3,7 @@ session_start();
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "mas_idiomas";
+$db = "gestion_usuarios";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
