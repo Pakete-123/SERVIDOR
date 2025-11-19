@@ -1,6 +1,11 @@
 <?php
 require_once("conexion.php");
 
+if (!isset($_SESSION["login"])) {
+  header("Location: login.php");
+  exit;
+}
+
 function mostrarDatos($conn)
 {
 
@@ -17,8 +22,8 @@ function mostrarDatos($conn)
       <td><?= $fila["F_NACIMIENTO"] ?></td>
       <td><?= $fila["NICK"] ?></td>
       <td><?= $fila["PASSWORD"] ?></td>
-      <td><a href="funciones.php?editar=<?= $fila['ID_USUARIO'] ?>">Editar</a></td>
-      <td><a href="funciones.php?eliminar=<?= $fila['ID_USUARIO'] ?>">Eliminar</a></td>
+      <td><a href="funciones.php?editar=<?= $fila['ID_USUARIO'] ?>" class="editar">Editar</a></td>
+      <td><a href="funciones.php?eliminar=<?= $fila['ID_USUARIO'] ?>" class="borrar">Eliminar</a></td>
     </tr>
 
   <?php  }
