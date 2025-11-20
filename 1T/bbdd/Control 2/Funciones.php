@@ -48,15 +48,17 @@ function obtenerTarea($id)
   $stmt->bind_param("i", $id);
 
   if ($stmt->execute()) {
+    return $stmt;
   }
 }
 
 if (isset($_GET["editar"])) {
+ 
   $id = $_GET["editar"];
 
-  $sql = $conn->query("SELECT * FROM tareas WHERE id = $id");
+  $sql = obtenerTarea($id);
 
-  if ($fila = $sql->fetch_assoc()) { ?>
+  if ($fila = $sql->get_result()->fetch_assoc()) { ?>
 
   <h2>Editando tarea #<?= $fila["id"] ?></h2>
     <form action="" method="post">
@@ -65,7 +67,7 @@ if (isset($_GET["editar"])) {
         <input type="text" name="titulo" value="<?= $fila["titulo"] ?>" required>
       </label>
       <label for="desc">Descripción
-        <textarea name="desc"></textarea>
+        <textarea name="desc" ><?= $fila["descripcion"] ?></textarea>
       </label>
       <label for="estado">Estado
         <select name="estado">
