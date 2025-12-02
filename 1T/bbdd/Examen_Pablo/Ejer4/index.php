@@ -19,7 +19,7 @@ function calcularMedia($alumnos)
     $media += $val["nota"];
   }
 
-  echo $media = $media / sizeof($val);
+  echo $media = $media / count($alumnos);
 }
 function aprobados($alumnos)
 {
