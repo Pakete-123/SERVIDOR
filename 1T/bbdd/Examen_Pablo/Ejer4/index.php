@@ -22,13 +22,30 @@ function calcularMedia($alumnos)
   echo $media = $media / count($alumnos);
 }
 function aprobados($alumnos)
-{
+{ ?>
+
+  <h2>Alumnos aprobados sin ordenar</h2>
+
+  <?php $apr = [];
   foreach ($alumnos as $val) {
-    if ($val["nota"] >= 5) { ?>
+    if ($val["nota"] >= 5) {
+      $apr[] = $val; ?>
       Nombre: <?= $val["nombre"] ?>,
       Nota: <?= $val["nota"] ?><br>
-      <?php ;
+  <?php
     }
+  }
+
+  usort($apr, function ($a, $b) {
+    return $b["nota"] <=> $a["nota"];
+  }); ?>
+
+  <h2>Alumnos aprobados ordenados</h2>
+
+  <?php foreach ($apr as $val) { ?>
+    Nombre: <?= $val["nombre"] ?>,
+    Nota: <?= $val["nota"] ?><br>
+<?php
   }
 }
 
@@ -45,12 +62,12 @@ function aprobados($alumnos)
 <body>
 
   <p>Media: <?= calcularMedia($alumnos) ?></p>
-  <p>Aprobados: <?= aprobados($alumnos) ?></p>
+  <?= aprobados($alumnos) ?>
 
 </body>
 
 </html>
-<?php 
+<?php
 if (isset($_GET["nombre"])) {
   $nom = strtolower($_GET["nombre"]);
   foreach ($alumnos as $val) {

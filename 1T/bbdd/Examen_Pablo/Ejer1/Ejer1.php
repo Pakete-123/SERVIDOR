@@ -22,7 +22,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) == "POST") {
     <?php break;
     }
 
-    if (!str_contains($email, "@") && !str_contains($email, ".com" || ".org" || ".net")) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $i++; ?>
       <p>El correo debe ser válido</p>
       <a href="index.html">Volver</a>

@@ -1,18 +1,9 @@
 <?php
 
-
-$enteros = [
-  rand(1, 100),
-  rand(1, 100),
-  rand(1, 100),
-  rand(1, 100),
-  rand(1, 100),
-  rand(1, 100),
-  rand(1, 100),
-  rand(1, 100),
-  rand(1, 100),
-  rand(1, 100)
-];
+$enteros = [];
+for ($i = 0; $i < 10; $i++) {
+  $enteros[] = rand(1, 100);
+}
 
 function estadisticas(array $numeros)
 {
