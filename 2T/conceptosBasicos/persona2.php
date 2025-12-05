@@ -10,7 +10,7 @@ public function __construct($nombre, $edad)
   $this->edad = $edad;
 }
 
-  function presentarse() {
+  public function presentarse() {
     return "Hola soy " . $this->nombre . " y tengo " . $this->edad . " años. <br>Clase CON CONSTRUCTOR";
   }
 

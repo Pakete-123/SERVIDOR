@@ -4,7 +4,7 @@ class Persona {
   public $nombre;
   public $edad;
 
-  function presentarse() {
+  public function presentarse() {
     return "Hola soy " . $this->nombre . " y tengo " . $this->edad . " años.<br> Clase SIN CONSTRUCTOR";
   }
 

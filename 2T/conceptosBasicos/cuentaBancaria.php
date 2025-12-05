@@ -25,16 +25,6 @@ class cuentaBancaria
     return $this->IBAN;
   }
 
-  public function getTitular()
-  {
-    return $this->titular;
-  }
-
-  public function setTitular($titular)
-  {
-    $this->titular = $titular;
-  }
-
   function depositar($cantidad) {
     $this->saldo += $cantidad;
     echo "<br>" . $this->getSaldo() . "€";

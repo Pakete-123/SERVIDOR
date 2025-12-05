@@ -11,21 +11,12 @@ class Persona3 {
     $this->edad = $edad;
   }
 
-  public function getNombre()
-  {
-    return $this->nombre;
-  }
-  public function getEdad()
-  {
-    return $this->edad;
+  function presentarse() {
+    return "Hola soy $this->nombre y tengo $this->edad años. <br>Clase PRIVADA";
   }
 
-  function presentarse($nombre, $edad) {
-    return "Hola soy $nombre y tengo $edad años. <br>Clase PRIVADA";
-  }
-
-  function cumpleaños($edad) {
-    return "¡Hoy cumplo $edad años!";
+  function cumpleaños() {
+    return "¡Hoy cumplo $this->edad años!";
   }
 
 }
@@ -33,5 +24,5 @@ class Persona3 {
 $per = new Persona3();
 $per->setNombre("Paloma");
 $per->setEdad(20);
-echo $per->presentarse($per->getNombre(), $per->getEdad()) . "<br>";
-echo $per->cumpleaños($per->getEdad());
+echo $per->presentarse() . "<br>";
+echo $per->cumpleaños();
