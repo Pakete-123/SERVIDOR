@@ -1,5 +1,5 @@
 <?php
-namespace App\Modelos;
+namespace App\Models;
 
 class Venta {
 
@@ -15,6 +15,14 @@ class Venta {
 
     }
     return $suma;
+  }
+
+  public function getProd() {
+    return $this->prod;
+  }
+
+  public function setProd($prod) {
+    $this->prod = $prod;
   }
 
 }

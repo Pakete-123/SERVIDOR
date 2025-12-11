@@ -1,5 +1,5 @@
 <?php
-namespace App\Modelos;
+namespace App\Models;
 
 class Producto {
 
@@ -13,7 +13,16 @@ class Producto {
     $this->precio = $precio;
   }
 
+  public function getId() {
+      return $this->id;
+  }
+  
+  public function getNombre() {
+      return $this->nombre;
+  }
+
   public function getPrecio() {
     return $this->precio;
   }
+
 }
