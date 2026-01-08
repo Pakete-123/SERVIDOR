@@ -3,26 +3,30 @@ namespace App\Models;
 
 class Venta {
 
-  private string $fecha = date("YYYY-mm-dd");
-  private string $nombre = date("HH:ii:ss");
-  private Producto $prod = [];
+  private string $fecha;
+  private string $hora;
+  private array $prod;
 
-  public function total() {
-    $suma = 0.0;
-    foreach ($this->prod as $p) {
+  public function __construct(array $producto) {
+    $this->fecha = date("Y-m-d");
+    $this->hora = date("H:i:s");
+    $this->prod = $producto;
+  }
 
-      $suma += floatval($p->getPrecio());
+  public function getFecha() {
+    return $this->fecha;
+  }
 
-    }
-    return $suma;
+  public function getHora() {
+    return $this->hora;
   }
 
   public function getProd() {
     return $this->prod;
   }
 
-  public function setProd($prod) {
-    $this->prod = $prod;
+  public function total() {
+    return array_sum(array_map(fn($p) => $p->precio, $this->prod));
   }
 
 }
