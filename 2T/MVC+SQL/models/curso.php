@@ -55,7 +55,9 @@ class Curso {
   public function insert() {
 
     $conn = Conexion::conexion();
-    $query = $conn->query("SELECT * ")
+    $insert = $conn->prepare("INSERT INTO cursos (nombre, duracion, precio) VALUES (?, ?, ?)");
+    $insert->bind_param("sid", $nombre, $duracion, $precio);
+    return $insert->execute();
 
   }
 
