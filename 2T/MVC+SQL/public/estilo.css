@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 5px;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #34495e;
+}
+
+p {
+    margin: 5px 0 10px 0;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* --- Enlaces --- */
+a {
+    color: #2980b9;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-left: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- Botones y enlaces de acción --- */
+small a {
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+/* --- Formularios --- */
+form {
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1c5980;
+}
+
+/* --- Mensajes --- */
+em {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* --- Layout general --- */
+#contenido {
+    max-width: 900px;
+    margin: auto;
+}
