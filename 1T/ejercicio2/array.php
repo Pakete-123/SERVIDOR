@@ -1,8 +1,7 @@
-<?php 
-    $frutas = ["Plátano", "Manzana", "Fresa", "Cereza", "Uva", "Nectarina"];
+<?php
+$frutas = ["Plátano", "Manzana", "Fresa", "Cereza", "Uva", "Nectarina"];
 
-    foreach ($frutas as $i) {
-        echo $i . "<br>";
-        
-    }
-?>
+foreach ($frutas as $i) {
+    echo $i . "<br>";
+
+}
