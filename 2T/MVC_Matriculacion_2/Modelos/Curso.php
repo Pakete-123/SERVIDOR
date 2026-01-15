@@ -13,7 +13,7 @@ class Curso {
 
     public static function getAll() {
         $db = Conexion::getConexion();
-        return $db->query("SELECT * FROM cursos")->fetchAll(\PDO::FETCH_OBJ);
+        return $db->query("SELECT * FROM cursos")->fetchAll();
     }
 
     public static function insert($nombre, $duracion, $precio) {
@@ -22,5 +22,15 @@ class Curso {
             "INSERT INTO cursos (nombre, duracion, precio) VALUES (?, ?, ?)"
         );
         $stmt->execute([$nombre, $duracion, $precio]);
+    }
+
+    public static function delete(int $id): void {
+        $db = Conexion::getConexion();
+
+        $db->prepare("DELETE FROM matriculas WHERE curso_id = ?")
+        ->execute([$id]);
+
+        $db->prepare("DELETE FROM cursos WHERE id = ?")
+        ->execute([$id]);
     }
 }

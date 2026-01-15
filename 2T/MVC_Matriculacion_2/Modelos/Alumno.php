@@ -1,8 +1,6 @@
 <?php
 namespace App\Modelos;
 
-use Dba\Connection;
-
 class Alumno {
 
     public int $id;
@@ -86,51 +84,79 @@ class Alumno {
         $db->commit();
     }
 
-    public static function obtenerPorID($id) {
+    public static function getById(int $id): Alumno {
+        $db = Conexion::getConexion();
 
-        $conexion = Conexion::getConexion();
-        $stmt = $conexion->prepare("SELECT * FROM alumnos WHERE id = :id");
-        $stmt->execute([":id" => $id]);
-        return $stmt->fetch(\PDO::FETCH_OBJ);
+        $sql = "
+            SELECT 
+                a.id AS alumno_id,
+                a.nombre AS alumno_nombre,
+                a.email,
+                c.id AS curso_id,
+                c.nombre AS curso_nombre
+            FROM alumnos a
+            LEFT JOIN matriculas m ON a.id = m.alumno_id
+            LEFT JOIN cursos c ON m.curso_id = c.id
+            WHERE a.id = ?
+        ";
 
-    }
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$id]);
+        $rows = $stmt->fetchAll();
 
-    public static function actualizar($id, $nombre, $email, $curso_id) {
-        $conexion = Conexion::getConexion();
-        $stmt = $conexion->prepare("UPDATE alumnos SET nombre = :nombre, email = :email, curso_id = :curso_id WHERE id = :id");
-        return $stmt->execute([
-            ":nombre" => $nombre,
-            ":email" => $email,
-            ":curso_id" => $curso_id,
-            ":id" => $id
-        ]);
-    }
+        $alumno = new Alumno(
+            $rows[0]['alumno_id'],
+            $rows[0]['alumno_nombre'],
+            $rows[0]['email']
+        );
 
-    public static function eliminar($id) {
-        $conexion = Conexion::getConexion();
-        $stmt = $conexion->prepare("DELETE FROM alumnos WHERE id = :id");
-        return $stmt->execute([":id" => $id]);
-    }
-
-    public static function guardarCursos($a_id, $c_ids) {
-        $stmt = Conexion::getConexion();
-        $stmtLimpiar = $stmt->prepare("DELETE FROM matriculas WHERE alumno_id = :id");
-        $stmtLimpiar->execute([":id" => $a_id]);
-
-        if (!empty($c_ids)) {
-            $stmtAñadir = $stmt->prepare("INSERT INTO matriculas (alumno_id, curso_id) VALUES (:a_id, :c_ids)");
-            foreach ($c_ids as $cur_ids) {
-                $stmtAñadir->execute([":a_id" => $a_id, ":c_ids" => $cur_ids]);
+        foreach ($rows as $row) {
+            if ($row['curso_id']) {
+                $alumno->addCurso(
+                    new Curso($row['curso_id'], $row['curso_nombre'])
+                );
             }
+        }
+
+        return $alumno;
+    }
+
+    public static function update(int $id, string $nombre, string $email): void {
+        $db = Conexion::getConexion();
+
+        $stmt = $db->prepare(
+            "UPDATE alumnos SET nombre = ?, email = ? WHERE id = ?"
+        );
+        $stmt->execute([$nombre, $email, $id]);
+    }
+
+    public static function updateCursos(int $idAlumno, array $cursos): void {
+        $db = Conexion::getConexion();
+
+        // Borrar matrículas actuales
+        $stmt = $db->prepare("DELETE FROM matriculas WHERE alumno_id = ?");
+        $stmt->execute([$idAlumno]);
+
+        // Insertar nuevas
+        $stmt = $db->prepare(
+            "INSERT INTO matriculas (alumno_id, curso_id) VALUES (?, ?)"
+        );
+
+        foreach ($cursos as $cursoId) {
+            $stmt->execute([$idAlumno, $cursoId]);
         }
     }
 
-    public static function obtenerIdsCursos($a_id) {
-        $conn = Conexion::getConexion();
-        $stmt = $conn->prepare("SELECT curso_id FROM matriculas WHERE alumno_id = :a_id");
-        $stmt->execute([":a_id" => $a_id]);
+    public static function delete(int $id): void {
+        $db = Conexion::getConexion();
 
-        return $stmt->fetchAll(\PDO::FETCH_COLUMN) ?: [];
+        $db->prepare("DELETE FROM matriculas WHERE alumno_id = ?")
+        ->execute([$id]);
+
+        $db->prepare("DELETE FROM alumnos WHERE id = ?")
+        ->execute([$id]);
     }
+
+    
 
 }

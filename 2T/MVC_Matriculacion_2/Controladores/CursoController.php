@@ -18,4 +18,9 @@ class CursoController {
         Curso::insert($_POST['nombre'], $_POST['duracion'], $_POST['precio']);
         header("Location: index.php?controller=curso");
     }
+
+    public function borrar() {
+        Curso::delete($_GET['id']);
+        header("Location: index.php?controller=curso");
+    }
 }

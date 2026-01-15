@@ -4,13 +4,21 @@
 <a href="index.php?controller=alumno&action=crear">Nuevo alumno</a>
 
 <?php foreach ($alumnos as $alumno): ?>
-    <h3><?= $alumno->nombre ?></h3>
-    <p><?= $alumno->email ?></p>
+    <h3>
+        <?= $alumno->nombre ?>
+        <small>
+            <a href="index.php?controller=alumno&action=editar&id=<?= $alumno->id ?>">
+                Editar
+            </a>
+            |
+            <a href="index.php?controller=alumno&action=borrar&id=<?= $alumno->id ?>"
+            onclick="return confirm('¿Seguro que quieres borrar este alumno?')">
+                Borrar
+            </a>
+        </small>
+    </h3>
 
-    <a href="index.php?controller=alumno&action=editar&id=<?= $alumno->id ?>" class="btnEditar">Editar</a>
-    |
-    <a href="index.php?controller=alumno&action=borrar&id=<?= $alumno->id ?>"
-        onclick="return confirm('¿Está seguro que quiere borrar este usuario?')" class="btnBorrar">Borrar</a>
+    <p><?= $alumno->email ?></p>
 
     <?php if (count($alumno->cursos) > 0): ?>
         <ul>

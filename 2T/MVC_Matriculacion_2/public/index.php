@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$controller = $_GET['controller'] ?? 'curso';
+$controller = $_GET['controller'] ?? 'alumno';
 $action     = $_GET['action'] ?? 'index';
 
 $controllerName = 'App\\Controladores\\' . ucfirst($controller) . 'Controller';
